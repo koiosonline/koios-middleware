@@ -5,7 +5,7 @@ import schedule from 'node-schedule';
 import handleCalendar from "./handlers/calendarHandler.js";
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 dotenv.config();
 
 // Callback to get data on the first load
