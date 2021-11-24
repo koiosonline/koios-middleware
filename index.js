@@ -19,7 +19,7 @@ const calendarSchedule = schedule.scheduleJob('* 1 * * *', async () => {
 app.use((req, res, next) => {
 
   // Website you wish to allow to connect. for now only koios.world and app.koios.world
-  const allowedOrigins = ['http://localhost:3000', 'https://app.koios.world', 'http://koios.world'];
+  const allowedOrigins = ['http://localhost:3000', 'https://app.koios.world', 'https://koios.world'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
