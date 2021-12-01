@@ -47,6 +47,10 @@ app.get('/calendar', async (req, res) => {
   res.send(await handleCalendar())
 });
 
+app.get('/refreshcalendar', async (req, res) => {
+  await fetchCalendar()
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
 });
