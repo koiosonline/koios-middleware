@@ -4,13 +4,21 @@ import store from 'store'
 const fetchDiscordLevels = async () => {
   const guildId = process.env.GUILD_ID
   const url = `https://mee6.xyz/api/plugins/levels/leaderboard/${guildId}`
+  const pages = 7
+  let totalData = []
 
-  await axios.get(url)
+  for (let i = 0; i <= pages; i++) {
+    const url = `https://mee6.xyz/api/plugins/levels/leaderboard/${guildId}?page=${i}`
+    await axios.get(url)
     .then((res) => {
-      const data = res.data
-      store.set('discordLevels', data);
+      const data = res.data.players
+      totalData.push(data)
+      if (i === 7) {
+        store.set('discordLevels', totalData);
+      }
       return
     })
+  }
 }
 
 export default fetchDiscordLevels
